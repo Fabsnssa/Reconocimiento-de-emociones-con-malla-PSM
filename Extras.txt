@@ -1,0 +1,38 @@
+Comandos de apoyo para instalar las dependencias y hacer funcionar el programa:
+    IMPORTANTE: el programa sólo funciona con la versión de pyhton 3.10, de tener otra no funcionará correctamente. 
+
+Instalar Git (de no haberlo hecho)
+
+Comandos (escribir desde la CMD o Powershell, direccionando el porgrama en la parte de DOCUMENTOS): cd documents
+    Instalar dependencias desde txt: pip install -r requirements.txt
+    Instalar Microsoft C++ Build Tools: https://visualstudio.microsoft.com/es/visual-cpp-build-tools/
+
+Instalar versión de python adecuada:
+    python --version
+    Invoke-WebRequest -Uri "https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe" -OutFile "$env:USERPROFILE\Downloads\python-3.10.0.exe"
+    Start-Process "$env:USERPROFILE\Downloads\python-3.10.0.exe" -ArgumentList "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0" -Wait
+    Instalarlo desde "Descargas"
+    Verificar versión: python --version
+
+Por si acaso, actualizar versión de pip: python -m pip install --upgrade pip
+    Las dependencias que instalas con pip se alojan principalmente en una carpeta llamada site-packages, que está dentro del directorio de instalación de Python que estés usando.
+    Ubicación típica en tu caso (Windows + Python 3.10). Los paquetes instalados deberían estar en: C:\Users\laboratorio\AppData\Local\Programs\Python\Python310\Lib\site-packages
+
+Por si surge error con Matplotlib:
+    pip uninstall matplotlib
+    pip install matplotlib==3.9.0
+
+Verificar la instalación de las dependencias en el entorno correcto: python -m pip show opencv-python
+    pip install opencv-python
+    pip show opencv-python
+
+NOTA: si en el programa aparece el error "cv2 is not import" (instalar en VSCode extensión ERROR LENS para mayor facilidad), hacer lo siguiente:
+    1- En VS Code, abre la paleta de comandos (Ctrl+Shift+P).
+    2- Escribe y selecciona: Python: Select Interpreter.
+    3- Elige el intérprete que corresponde a la ruta: c:\users\laboratorio\appdata\local\programs\python\python310\python.exe
+    4- Guarda y vuelve a ejecutar tu script.
+    Esto debería resolver el problema de importación de cv2.
+
+INICIAR PROGRAMA desde la terminal de VSCode (2 opciones):
+    1- escribir python examples/video_stream.py
+    2- Darle clic a "Run python file"
